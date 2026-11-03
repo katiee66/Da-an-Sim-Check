@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Da’an SIM Check | Your first month in Taipei</title>
+<meta name="description" content="Check your documents and budget before visiting a phone shop in Da’an, Taipei.">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:20px}body{margin:0;background:#faf5e9;color:#152d27;font:16px/1.55 system-ui,sans-serif}header,main,footer{max-width:1040px;margin:auto;padding-inline:clamp(16px,4vw,46px)}header{display:flex;justify-content:space-between;align-items:center;padding-block:18px;gap:12px}a{color:inherit}header a{font-weight:750;text-decoration:none}.tag{font-size:.74rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.hero{background:#14382e;color:#fff8e7;border-radius:24px;padding:clamp(24px,6vw,64px);display:grid;grid-template-columns:1.4fr 1fr;gap:22px;align-items:center;overflow:hidden}.hero h1{font:700 clamp(2.8rem,7vw,5.3rem)/.98 Georgia,serif;letter-spacing:-.045em;margin:16px 0}.hero h1 em{color:#f9ca77}.hero p{max-width:36ch}.cta,button{display:inline-block;border:0;border-radius:10px;padding:12px 18px;background:#ffcd77;color:#183127;font:inherit;font-weight:800;cursor:pointer;text-decoration:none}.secondary{display:inline-block;margin:12px 0 0 12px}.art{width:100%;max-height:320px}.strip{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid #d8d0be;padding:20px 0}.grid{display:grid;grid-template-columns:1fr 1.2fr;gap:32px;align-items:start;margin:44px 0}.grid h2{font:700 2.4rem/1.06 Georgia,serif;margin:8px 0}.card{background:#fffdf7;border:1px solid #ddd4c1;border-radius:18px;padding:22px}.option{display:flex;align-items:center;gap:10px;padding:11px 0}input{accent-color:#175e48}select{width:100%;font:inherit;padding:10px;border:1px solid #7a8c81;border-radius:8px;background:white;color:inherit;margin:7px 0 14px}button{width:100%;background:#175e48;color:white}#result:not(:empty){margin-top:15px;padding:14px;border-radius:10px;background:#e8f2e9}#result h3,#result p{margin:0}#result p{margin-top:5px}small{display:block;margin-top:12px;color:#496057}footer{border-top:1px solid #d8d0be;padding-block:18px;margin-bottom:10px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #b66d19;outline-offset:4px}@media(max-width:650px){.hero,.grid{grid-template-columns:1fr}.art{max-height:170px}.grid{margin:28px 0;gap:16px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><a href="#">◈ Da’an SIM Check</a><span class="tag">Taipei · Student demo</span></header>
+<main>
+<section class="hero">
+<div><span class="tag">Your first month in Taipei</span>
+<h1>New city.<br>New number.<br><em>Know what to bring.</em></h1>
+<p>Check your documents and upfront budget before visiting a phone shop in Da’an.</p>
+<a class="cta" href="#check">Start my SIM check</a>
+<a class="secondary" href="#how">How it works</a></div>
+<svg class="art" viewBox="0 0 320 290" aria-hidden="true"><circle cx="170" cy="143" r="128" fill="#275648"/><path d="M20 230H300M20 250H300M50 30V270M82 30V270M248 30V270M280 30V270" stroke="#5b8b73" opacity=".55"/><g transform="rotate(12 160 150)"><rect x="94" y="29" width="136" height="234" rx="23" fill="#0e2b22" stroke="#ffcd77" stroke-width="3"/><rect x="105" y="43" width="114" height="201" rx="15" fill="#e8f2e9"/><path d="M136 93h42l21 21v59h-63z" fill="#ffcd77" stroke="#14382e" stroke-width="3"/><rect x="148" y="122" width="38" height="34" rx="6" fill="none" stroke="#14382e" stroke-width="3"/><path d="M160 122v34m13-34v34m-25-17h38" stroke="#14382e" stroke-width="2"/><circle cx="161" cy="203" r="14" fill="#175e48"/><path d="m155 203 4 4 8-9" stroke="#fff" stroke-width="2" fill="none"/></g></svg>
+</section>
+<div class="strip tag" id="how"><span>01 · Pick your documents</span><span>02 · Set your budget</span><span>03 · Get your next step</span></div>
+<section class="grid" id="check">
+<div><span class="tag">SIM-only monthly plans</span><h2>Check before you go.</h2><p>Tick the documents you have today. Your answers stay in this page.</p></div>
+<div class="card">
+<form id="checker">
+<label class="option"><input type="checkbox" name="passport"> I have my passport</label>
+<label class="option"><input type="checkbox" name="arc"> I have my Alien Resident Certificate (ARC)</label>
+<label for="budget">Upfront budget (NT$)</label>
+<select id="budget" name="budget">
+<option value="">I’m not sure yet</option>
+<option value="low">Under NT$1,000</option>
+<option value="enough">NT$1,000 or more</option>
+</select>
+<button type="submit">Check my next step</button>
+</form>
+<div id="result" role="status" aria-live="polite"></div>
+<noscript><p>Ask the shop which documents it accepts and what you’ll pay upfront.</p></noscript>
+<small>Demo uses a fictional NT$1,000 example. The shop confirms its own fees and requirements.</small>
+</div></section>
+</main>
+<footer><small>Da’an SIM Check · Student prototype</small></footer>
+<script>
+const form = document.querySelector('#checker');
+const result = document.querySelector('#result');
+
+function nextStep({ passport, arc, budget }) {
+  if (!passport) return ['Check which ID you can bring', 'Ask the shop what it accepts if you don’t have your passport with you.'];
+  if (!arc) return ['Ask about alternatives to the ARC', 'Tell the shop you have your passport and ask what it accepts while your ARC is pending. If you need a number today, ask about prepaid SIMs.'];
+  if (budget === 'low') return ['Ask for a lower upfront cost', 'The example is over your budget. Ask the shop for the cheapest SIM-only option, including any refundable deposit.'];
+  if (!budget) return ['Ask for the total upfront cost', 'Confirm the shop accepts your documents and ask what you would pay on the day, including any deposit.'];
+  return ['Confirm before visiting', 'Your answers fit the demo example. Ask the shop to confirm your documents, the first payment, and any deposit.'];
+}
+
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const answers = new FormData(form);
+  const [title, detail] = nextStep({
+    passport: answers.has('passport'),
+    arc: answers.has('arc'),
+    budget: answers.get('budget')
+  });
+  const heading = document.createElement('h3');
+  const paragraph = document.createElement('p');
+  heading.textContent = title;
+  paragraph.textContent = detail;
+  result.replaceChildren(heading, paragraph);
+});
+form.addEventListener('input', () => result.replaceChildren());
+</script>
+</body>
+</html>
